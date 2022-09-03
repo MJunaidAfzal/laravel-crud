@@ -46,3 +46,6 @@ Route::get('doctors/{id}/delete', [DoctorController::class, 'delete'])->name('do
 Route::get('patients' , [PatientController::class , 'index'])->name('patients.index');
 Route::get('patients/create' , [PatientController::class , 'create'])->name('patients.create');
 Route::post('patients/store' , [PatientController::class , 'store'])->name('patients.store');
+Route::get('patients/{id}/edit', [PatientController::class, 'edit'])->name('patients.edit');
+Route::post('patients/{id}/update', [PatientController::class, 'update'])->name('patients.update');
+Route::get('patients/{id}/delete', [PatientController::class, 'delete'])->name('patients.delete');

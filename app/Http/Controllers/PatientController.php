@@ -56,4 +56,56 @@ class PatientController extends Controller
 
 }
 
+
+    public function edit($id){
+        $hospitals = Hospital::get();
+        $doctors = Doctor::get();
+        $patient = Patient::where('id',$id)->first();
+        return view('patients.edit',compact('hospitals','doctors','patient'));
+    }
+
+    public function update(Request $request, $id){
+        $request->validate([
+            'name' => 'required|max:191|:patients,name'.$id,
+            'phone' => 'required|max:191|:patients,phone'.$id,
+            'address' => 'required|max:191|:patients,address'.$id,
+            'email' => 'required|max:191|:patients,email'.$id,
+            'hospital' => 'required|max:191|:patients,hospital'.$id,
+            'doctor' => 'required|max:191|:patients,doctor'.$id,
+        ]);
+
+        if($request->file('patient')){
+            $patient = $request->file('patient');
+            $patientName = 'patient' . '-' . time() . '.' . $patient->getClientOriginalExtension();
+            $patient->move('upload/patient/', $patientName);
+        }
+
+        $update = Patient::where('id',$id)->update([
+            'name' =>$request->name,
+            'phone' =>$request->phone,
+            'address' =>$request->address,
+            'email' =>$request->email,
+            'hospital' =>$request->hospital,
+            'doctor' =>$request->doctor,
+            'patient' =>$patientName,
+        ]);
+
+        if($update > 0){
+            return redirect()->route('patients.index')->with('success','patient Updated');
+        }
+        return redirect()->route('patients.edit', $id)->with('error','Something Went Wrong');
+
+    }
+
+    public function delete($id){
+        $patient = Patient::where('id',$id)->first();
+        if(!empty($patient)){
+            $patient->delete();
+            return redirect()->route('patients.index')->with('success','patient Deleted');
+        }
+        return redirect()->route('patients.index')->with('error','Record Not Found');
+
+
+    }
+
 }

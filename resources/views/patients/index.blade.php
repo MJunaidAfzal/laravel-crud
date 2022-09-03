@@ -46,6 +46,8 @@
       <th scope="col">Hospital</th>
       <th scope="col">Doctor</th>
       <th scope="col">Patient Pic</th>
+      <th scope="col">Action</th>
+
     </tr>
   </thead>
   <tbody>
@@ -59,6 +61,14 @@
         <td  scope="row">{{ $patient->hospital }}</td>
         <td  scope="row">{{ $patient->doctor }}</td>
         <td style="width:10%"><img class="rounded img-thumbnail" src="{{asset('upload/patient/'.$patient->patient)}}" alt="" width="100%"></td>
+
+        <td  scope="row">
+               
+               <a href="{{route('patients.edit',$patient->id)}}" class="btn btn-primary btn-sm">  <i class="fa fa-edit"></i>  EDIT </a>
+               &nbsp;|&nbsp;
+               <a href="{{route('patients.delete',$patient->id)}}" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i>  DELETE </a> 
+       
+               </td>
     </tr>
     @endforeach
 
