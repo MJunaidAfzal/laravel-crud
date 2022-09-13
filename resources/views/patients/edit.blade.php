@@ -36,24 +36,24 @@
                 <div class="row">
                     <div class="col-md-6 mt-3">
                     <label class="text-dark" for="name"><b>Name</b></label>
-                            <input type="text" class="form-control" value="{{$patient->name}}" name="name">
+                            <input type="text" class="form-control" value="{{old('name', $patient->name) }}" name="name">
                             <small class="text-danger">@error('name'){{$message}} @enderror</small>
                     </div>
                     <div class="col-md-6 mt-3">
                     <label class="text-dark" for="phone"><b>Phone</b></label>
-                            <input type="number" class="form-control" value="{{$patient->phone}}" name="phone">
+                            <input type="number" class="form-control" value="{{old('phone', $patient->phone) }}" name="phone">
                             <small class="text-danger">@error('phone'){{$message}} @enderror</small>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 mt-3">
                     <label class="text-dark" for="address"><b>Address</b></label>
-                            <input type="text" class="form-control" value="{{$patient->address}}" name="address">
+                            <input type="text" class="form-control" value="{{old('address', $patient->address) }}" name="address">
                             <small class="text-danger">@error('address'){{$message}} @enderror</small>
                     </div>
                     <div class="col-md-6 mt-3">
                     <label class="text-dark" for="email"><b>E-mail</b></label>
-                            <input type="text" class="form-control" value="{{$patient->email}}" name="email">
+                            <input type="text" class="form-control" value="{{old('email', $patient->email) }}" name="email">
                             <small class="text-danger">@error('email'){{$message}} @enderror</small>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                             <select name="doctor" class="form-control" value="{{$patient->doctor}}">
                                 <option value="">Please Select</option>
                                 @foreach($doctors as $doctor)
-                                    <option value="{{ $doctor->name }}"  @if(old("patient")) selected @endif>{{ $doctor->name }}</option>
+                                    <option value="{{ $doctor->name }}"  @if(old("doctor")) selected @endif>{{ $doctor->name }}</option>
                                 @endforeach
                             </select>
                             <small class="text-danger">@error('doctor'){{$message}} @enderror</small>
@@ -82,7 +82,7 @@
                 <div class="row">
                     <div class="col-md-12 mt-3">
                     <label class="text-dark" for="patient"><b>Patient pic</b></label>
-                              <input type="file" class="form-control" name="patient" value="{{$patient->patient}}">
+                              <input type="file" class="form-control" name="patient" value="{{old('patient', $patient->patient) }}">
                         <small class="text-danger">@error('patient'){{$message}} @enderror</small>
                     </div>
                 </div>

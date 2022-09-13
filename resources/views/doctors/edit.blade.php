@@ -40,19 +40,19 @@
                         <div class="row">
                             <div class="col-md-6">
                             <label for=""><b>Name</b></label>
-                             <input style="border: groove 3px darkred;" type="text" name="name" id="" class="p-4 form-control" value="{{$doctor->name}}">
+                             <input style="border: groove 3px darkred;" type="text" name="name" id="" class="p-4 form-control" value="{{old('name', $doctor->name) }}">
                             <small class="text-danger">@error('name')  {{$message}} @enderror</small>
                             </div>
                             <div class="col-md-6">
                             <label for=""><b>E-mail</b></label>
-                             <input style="border: groove 3px darkred;" type="text" name="email" id="" class="p-4 form-control" value="{{$doctor->email}}" >
+                             <input style="border: groove 3px darkred;" type="text" name="email" id="" class="p-4 form-control" value="{{old('email', $doctor->email) }}" >
                             <small class="text-danger">@error('email')  {{$message}} @enderror</small>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12 mt-3">
                             <label for=""><b>Phone</b></label>
-                             <input style="border: groove 3px darkred;" type="number" name="phone" id="" class="p-4 form-control" value="{{$doctor->phone}}" >
+                             <input style="border: groove 3px darkred;" type="number" name="phone" id="" class="p-4 form-control" value="{{old('phone', $doctor->phone) }}" >
                             <small class="text-danger">@error('phone')  {{$message}} @enderror</small>
                             </div>
  

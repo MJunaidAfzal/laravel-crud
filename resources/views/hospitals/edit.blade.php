@@ -40,7 +40,7 @@
                         <div class="row">
                             <div class="col-md-12">
                             <label for=""><b>Name</b></label>
-                             <input style="border: groove 3px darkred;" type="text" name="name" id="" class="p-3 form-control" value="{{$hospital->name}}">
+                             <input style="border: groove 3px darkred;" type="text" name="name" id="" class="p-3 form-control" value="{{old('name', $hospital->name) }}">
                             <small class="text-danger">@error('name')  {{$message}} @enderror</small>
                             </div>
          
