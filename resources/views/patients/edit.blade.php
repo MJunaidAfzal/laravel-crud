@@ -84,6 +84,9 @@
                     <label class="text-dark" for="patient"><b>Patient pic</b></label>
                               <input type="file" class="form-control" name="patient" value="{{old('patient', $patient->patient) }}">
                         <small class="text-danger">@error('patient'){{$message}} @enderror</small>
+                        @if(!empty($patient->patient))
+                        <img src="{{asset('upload/patient/'.$patient->patient)}}" class="img-thumbnail" style="height:100px; width:100px">
+                        @endif
                     </div>
                 </div>
                 <button type="submit" class="btn btn-dark btn-block mt-3">UPDATE</button>
