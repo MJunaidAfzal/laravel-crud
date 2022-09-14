@@ -10,4 +10,11 @@ class Patient extends Model
     use HasFactory;
     protected $guarded = [];
 
+    public function hospital(){
+        return $this->belongsto(Hospital::class);
+    }
+
+    public function doctor(){
+        return $this->belongsto(Doctor::class);
+    }
 }

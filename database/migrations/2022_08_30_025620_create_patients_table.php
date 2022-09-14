@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('phone');
             $table->string('address');
             $table->string('email');
-            $table->string('hospital');
-            $table->string('doctor');
+            $table->string('hospital_id');
+            $table->string('doctor_id');
             $table->string('patient');
             $table->timestamps();
         });

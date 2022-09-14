@@ -24,11 +24,11 @@ class PatientController extends Controller
     public function store(Request $request){
         $request->validate([
             'name' => 'required|max:191|:patients,name',
-            'phone' => 'required|max:191|:patients,phone',
+            'phone' => 'required|max:191|unique:patients,phone',
             'address' => 'required|max:191|:patients,address',
-            'email' => 'required|max:191|:patients,email',
-            'hospital' => 'required|max:191|:patients,hospital',
-            'doctor' => 'required|max:191|:patients,doctor',
+            'email' => 'required|max:191|unique:patients,email',
+            'hospital_id' => 'required|max:191|:patients,hospital_id',
+            'doctor_id' => 'required|max:191|:patients,doctor_id',
         ]);
 
         if($request->file('patient')){
@@ -42,8 +42,8 @@ class PatientController extends Controller
             'phone' =>$request->phone,
             'address' =>$request->address,
             'email' =>$request->email,
-            'hospital' =>$request->hospital,
-            'doctor' =>$request->doctor,
+            'hospital_id' =>$request->hospital_id,
+            'doctor_id' =>$request->doctor_id,
             'patient' =>$patientName,
         ]);
 
@@ -66,18 +66,22 @@ class PatientController extends Controller
 
     public function update(Request $request, $id){
         $request->validate([
-            'name' => 'required|max:191|:patients,name'.$id,
-            'phone' => 'required|max:191|:patients,phone'.$id,
-            'address' => 'required|max:191|:patients,address'.$id,
-            'email' => 'required|max:191|:patients,email'.$id,
-            'hospital' => 'required|max:191|:patients,hospital'.$id,
-            'doctor' => 'required|max:191|:patients,doctor'.$id,
+            'name' => 'required|max:191|:patients,name,'.$id,
+            'phone' => 'required|max:191|unique:patients,phone,'.$id,
+            'address' => 'required|max:191|:patients,address,'.$id,
+            'email' => 'required|max:191|unique:patients,email,'.$id,
+            'hospital_id' => 'required|max:191|:patients,hospital_id,'.$id,
+            'doctor_id' => 'required|max:191|:patients,doctor_id,'.$id,
         ]);
+        $patientData = Patient::where('id',$id)->first();
 
         if($request->file('patient')){
             $patient = $request->file('patient');
             $patientName = 'patient' . '-' . time() . '.' . $patient->getClientOriginalExtension();
             $patient->move('upload/patient/', $patientName);
+        }
+        else{
+            $patientName = $patientData->patient;
         }
 
         $update = Patient::where('id',$id)->update([
@@ -85,8 +89,8 @@ class PatientController extends Controller
             'phone' =>$request->phone,
             'address' =>$request->address,
             'email' =>$request->email,
-            'hospital' =>$request->hospital,
-            'doctor' =>$request->doctor,
+            'hospital_id' =>$request->hospital_id,
+            'doctor_id' =>$request->doctor_id,
             'patient' =>$patientName,
         ]);
 

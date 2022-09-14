@@ -63,7 +63,7 @@
                             <select name="hospital" class="form-control" value="{{$patient->hospital}}">
                                 <option value="">Please Select</option>
                                 @foreach($hospitals as $hospital)
-                                    <option value="{{$hospital->name}}" @if(old("hospital")) selected @endif>{{ $hospital->name }}</option>
+                                    <option value="{{$hospital->id}}" @if($hospital->id == $patient->hospital_id) selected @endif>{{ $hospital->name }}</option>
                                 @endforeach
                             </select>
                             <small class="text-danger">@error('hospital'){{$message}} @enderror</small>
@@ -73,7 +73,7 @@
                             <select name="doctor" class="form-control" value="{{$patient->doctor}}">
                                 <option value="">Please Select</option>
                                 @foreach($doctors as $doctor)
-                                    <option value="{{ $doctor->name }}"  @if(old("doctor")) selected @endif>{{ $doctor->name }}</option>
+                                    <option value="{{ $doctor->id }}" @if($doctor->id == $patient->doctor_id) selected @endif>{{ $doctor->name }}</option>
                                 @endforeach
                             </select>
                             <small class="text-danger">@error('doctor'){{$message}} @enderror</small>

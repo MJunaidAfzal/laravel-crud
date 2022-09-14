@@ -19,7 +19,7 @@ class DoctorController extends Controller
     public function store(Request $request){
 
         $request->validate([
-            'name' => 'required|max:191|unique:doctors,name',
+            'name' => 'required|max:191|:doctors,name',
             'email' => 'required|unique:doctors,email',
             'phone' => 'required|unique:doctors,phone',
             'status' => 'required'
@@ -48,9 +48,9 @@ class DoctorController extends Controller
 
     public function update(Request $request, $id){
         $request->validate([
-            'name' => 'required|max:191|:doctors,name'.$id ,
-            'email' => 'required|:doctors,email' .$id,
-            'phone' => 'required|:doctors,phone' .$id,
+            'name' => 'required|max:191|:doctors,name,'.$id ,
+            'email' => 'required|unique:doctors,email,'.$id,
+            'phone' => 'required|unique:doctors,phone,'.$id,
             'status' => 'required'
         ]);
 
