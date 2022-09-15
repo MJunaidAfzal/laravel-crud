@@ -60,20 +60,20 @@
                 <div class="row">
                     <div class="col-md-6 mt-3">
                     <label class="text-dark" for="hospital"><b>Hospital</b></label>
-                            <select name="hospital" class="form-control" value="{{$patient->hospital}}">
+                            <select name="hospital_id" class="form-control" value="{{$patient->hospital}}">
                                 <option value="">Please Select</option>
-                                @foreach($hospitals as $hospital)
-                                    <option value="{{$hospital->id}}" @if($hospital->id == $patient->hospital_id) selected @endif>{{ $hospital->name }}</option>
+                                @foreach($hospitals as $hospital) 
+                                    <option value="{{$hospital->name}}" @if($hospital->name == $patient->hospital_id) selected @endif>{{ $hospital->name }}</option>
                                 @endforeach
                             </select>
                             <small class="text-danger">@error('hospital'){{$message}} @enderror</small>
                     </div>
                     <div class="col-md-6 mt-3">
                     <label class="text-dark" for="doctor"><b>Doctor</b></label>
-                            <select name="doctor" class="form-control" value="{{$patient->doctor}}">
+                            <select name="doctor_id" class="form-control" value="{{$patient->doctor}}">
                                 <option value="">Please Select</option>
                                 @foreach($doctors as $doctor)
-                                    <option value="{{ $doctor->id }}" @if($doctor->id == $patient->doctor_id) selected @endif>{{ $doctor->name }}</option>
+                                    <option value="{{ $doctor->name }}" @if($doctor->name == $patient->doctor_id) selected @endif>{{ $doctor->name }}</option>
                                 @endforeach
                             </select>
                             <small class="text-danger">@error('doctor'){{$message}} @enderror</small>

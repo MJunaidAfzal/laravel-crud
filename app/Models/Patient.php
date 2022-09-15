@@ -11,10 +11,10 @@ class Patient extends Model
     protected $guarded = [];
 
     public function hospital(){
-        return $this->belongsto(Hospital::class);
+        return $this->belongsTo(Hospital::class);
     }
 
     public function doctor(){
-        return $this->belongsto(Doctor::class);
+        return $this->belongsTo(Doctor::class);
     }
 }

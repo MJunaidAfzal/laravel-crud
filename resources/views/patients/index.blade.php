@@ -58,8 +58,8 @@
         <td  scope="row">{{ $patient->phone }}</td>
         <td  scope="row">{{ $patient->address }}</td>
         <td  scope="row">{{ $patient->email }}</td>
-        <td  scope="row">{{ $patient->hospital->name }}</td>
-        <td  scope="row">{{ $patient->doctor->name }}</td>
+        <td  scope="row">{{ $patient->hospital_id }}</td>
+        <td  scope="row">{{ $patient->doctor_id }}</td>
         <td style="width:10%"><img class="rounded img-thumbnail" src="{{asset('upload/patient/'.$patient->patient)}}" alt="" width="100%"></td>
 
         <td  scope="row">
